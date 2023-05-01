@@ -20,6 +20,8 @@ export const isAuthenticated = (req: Request, res: Response, next: NextFunction)
       process.env.JWT_SECRET
     ) as PayloadToken;
 
+    req.user_id = sub;
+
     return next();
     
   } catch (error) {
