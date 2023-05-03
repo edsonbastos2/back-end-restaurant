@@ -9,6 +9,16 @@ interface Product {
 }
 export class CreateProductService {
   async execulte({name, price, banner, description, category_id}: Product) {
-    return {ok: true};
+
+    const product = await prismaClient.product.create({
+      data: {
+        name,
+        price,
+        banner,
+        description,
+        category_id
+      }
+    });
+    return product;
   }
 }
